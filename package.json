@@ -1,6 +1,6 @@
 {
-  "name": "favicons-webpack-plugin",
-  "version": "0.0.9",
+  "name": "@sampension/favicons-webpack-plugin",
+  "version": "0.0.9-secpatch.4",
   "description": "Let webpack generate all your favicons and icons for you",
   "main": "index.js",
   "files": [
@@ -9,13 +9,12 @@
   ],
   "scripts": {
     "lint": "semistandard",
-    "prepublish": "npm run test",
     "posttest": "npm run lint",
     "test": "ava"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jantimon/favicons-webpack-plugin.git"
+    "url": "https://github.com/sampension/favicons-webpack-plugin.git"
   },
   "keywords": [
     "webpack",
@@ -48,9 +47,9 @@
     "webpack-dev-middleware": "^1.6.1"
   },
   "dependencies": {
-    "favicons": "^4.8.3",
-    "loader-utils": "^0.2.14",
-    "lodash": "^4.11.1"
+    "favicons": "^5.4.1",
+    "loader-utils": "^1.2.3",
+    "lodash": "^4.17.14"
   },
   "peerDependencies": {
     "webpack": "^1.13.0 || ^2.0.0 || ^3.0.0 || ^4.0.0"
