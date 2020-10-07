@@ -177,6 +177,16 @@ plugins: [
       developerURL: null, // prevent retrieving from the nearest package.json
       background: '#ddd',
       theme_color: '#333',
+      appConfig: { // extra manifest properties not supported by favicons module
+          prefer_related_applications: true,
+          related_applications: [
+            {
+              platform: 'play',
+              id: 'com.google.samples.apps.iosched',
+            },
+            lang: "en-US",
+          ],
+        },
       icons: {
         coast: false,
         yandex: false
