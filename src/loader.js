@@ -33,7 +33,7 @@ module.exports = async function(content) {
     const mainfestIndex = files.findIndex(({ name }) => name === 'manifest.json');
     const manifestContent = JSON.parse(files[mainfestIndex].contents);
     const newContent = Buffer.from(JSON.stringify(
-      { ...manifestContent, ...query.options.appConfig, ...manifestContent.icons },
+      { ...manifestContent, ...query.options.appConfig },
       null, 4
     ));
    files[mainfestIndex].contents = newContent;
