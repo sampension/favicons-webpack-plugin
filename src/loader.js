@@ -30,10 +30,10 @@ module.exports = async function(content) {
   // We enrich the manifest.json with custom values from options.appConfig
   // if they are not supported in the favicons plugin
   if (query.options.appConfig) {
-    const mainfestIndex = files.findIndex(
+    const manifestIndex = files.findIndex(
       ({ name }) => name === 'manifest.json'
     );
-    const manifestContent = JSON.parse(files[mainfestIndex].contents);
+    const manifestContent = JSON.parse(files[manifestIndex].contents);
     const newContent = Buffer.from(
       JSON.stringify(
         { ...manifestContent, ...query.options.appConfig },
@@ -41,7 +41,7 @@ module.exports = async function(content) {
         4
       )
     );
-    files[mainfestIndex].contents = newContent;
+    files[manifestIndex].contents = newContent;
   }
 
   const assets = [...images, ...files].map(({ name, contents }) => ({
