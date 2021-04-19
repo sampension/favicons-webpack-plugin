@@ -11,16 +11,19 @@ module.exports.expected = path.resolve(fixtures, 'expected');
 module.exports.logo = path.resolve(fixtures, 'logo.png');
 module.exports.empty = path.resolve(fixtures, 'empty.png');
 module.exports.invalid = path.resolve(fixtures, 'invalid.png');
+/** the size of the webpack cache without favicons */
+module.exports.cacheBaseSize = 60000;
 
-module.exports.mkdir = () => fs.mkdtemp(path.join(os.tmpdir(), 'WWP'));
+module.exports.mkdir = () => fs.mkdtemp(path.join(os.tmpdir(), 'Favicons'));
 
 module.exports.compiler = config => {
   config = merge(
     {
       entry: path.resolve(fixtures, 'entry.js'),
       plugins: [],
-      output: {
-        publicPath: '/'
+      output: {},
+      infrastructureLogging: {
+        level: 'info'
       }
     },
     config
@@ -45,7 +48,7 @@ module.exports.run = compiler =>
     compiler.run((err, stats) =>
       err || stats.hasErrors()
         ? reject(err || stats.toJson().errors)
-        : resolve(stats)
+        : compiler.close(() => (err ? reject(err) : resolve(stats)))
     );
   });
 
@@ -56,7 +59,9 @@ module.exports.snapshotCompilationAssets = (t, compilerStats) => {
   const assetNames = [...compilerStats.compilation.emittedAssets].sort();
   const distPath = compilerStats.compilation.outputOptions.path;
   // Check if all files are generated correctly
-  t.snapshot(assetNames.map(replaceHash));
+  t.snapshot(
+    assetNames.map(assetName => replaceHash(replaceBackSlashes(assetName)))
+  );
   const htmlFiles = /\.html?$/;
   const textFiles = /\.(json|html?|webapp|xml)$/;
   // CSS and JS files are not touched by this plugin
@@ -78,7 +83,7 @@ module.exports.snapshotCompilationAssets = (t, compilerStats) => {
           : textContent;
 
       return {
-        assetName: replaceHash(assetName),
+        assetName: replaceHash(replaceBackSlashes(assetName)),
         content:
           content.length === ''
             ? 'EMPTY FILE'
@@ -96,7 +101,7 @@ function getFileDetails(assetName, buffer) {
 
     return `${size.type} ${size.width}x${size.height}`;
   } catch (e) {
-    return `binary ${assetName}`;
+    return `binary ${replaceBackSlashes(assetName)}`;
   }
 }
 
@@ -111,4 +116,16 @@ function replaceHash(content) {
       return `${prefix}__replaced_hash_${hash.length}${suffix}`;
     }
   );
+}
+
+/**
+ * This utils replaces file paths used in snapshots
+ * to support running all tests also on Windows machines
+ *
+ * e.g. \\assets\\favicon.png -> /assets/favicon.png
+ *
+ * @param {string} content
+ */
+function replaceBackSlashes(content) {
+  return content.split(path.sep).join('/');
 }
