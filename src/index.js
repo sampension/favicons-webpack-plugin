@@ -414,7 +414,10 @@ class FaviconsWebpackPlugin {
       if (file.name.endsWith('manifest.json')) {
         // FIX: adding ability to extend the manifest with custom properties
         let generatedManifest = JSON.parse(file.contents.toString('utf-8'));
-        generatedManifest = {...generatedManifest, ...this.options.favicons.appConfig };
+        generatedManifest = {
+          ...generatedManifest,
+          ...this.options.favicons.appConfig
+        };
 
         return {
           ...file,
