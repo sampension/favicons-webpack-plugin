@@ -1,5 +1,5 @@
 {
-  "name": "favicons-webpack-plugin",
+  "name": "@sampension/favicons-webpack-plugin",
   "version": "5.0.2",
   "description": "Let webpack generate all your favicons and icons for you",
   "main": "src/index.js",
@@ -20,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jantimon/favicons-webpack-plugin.git"
+    "url": "https://github.com/sampension/favicons-webpack-plugin.git"
   },
   "keywords": [
     "webpack",
