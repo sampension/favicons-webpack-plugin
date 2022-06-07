@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.1.0](https://github.com/sampension/favicons-webpack-plugin/compare/v5.0.2...v5.1.0) (2022-06-07)
+
+
+### Bug Fixes
+
+* package lock update + version bump ([ee91c73](https://github.com/sampension/favicons-webpack-plugin/commit/ee91c73c0d5b315dd117add727261feac614585e))
+* run prettify ([f110dfd](https://github.com/sampension/favicons-webpack-plugin/commit/f110dfda62ead3b48686846e96468da777e60f2e))
+* upgraded dependancies ([62da9f8](https://github.com/sampension/favicons-webpack-plugin/commit/62da9f804171e4fbd6d262e96a1adea2d24bc7d0))
+
+## [5.0.0](https://github.com/sampension/favicons-webpack-plugin/compare/v4.2.0...v5.0.0) (2020-11-19)
+
+
+### Features
+
+* use the processAssets webpack api to add assets ([5aff9c4](https://github.com/sampension/favicons-webpack-plugin/commit/5aff9c4414d36749b25072929a6bbe37ebb73104))
+
+
+### Bug Fixes
+
+* reverted desturcturing ([0315b8f](https://github.com/sampension/favicons-webpack-plugin/commit/0315b8f6f11de6b0b042beec0c44f28678ee8b25))
+* support for extra properties ([b703fb5](https://github.com/sampension/favicons-webpack-plugin/commit/b703fb57fa9f5fec882004ea1626894c432c3f5c))
+* typo ([60c58e9](https://github.com/sampension/favicons-webpack-plugin/commit/60c58e91b013f114e896566aeb3b3ae4176d394f))
+* updated readme ([27bc530](https://github.com/sampension/favicons-webpack-plugin/commit/27bc53071ed32372d2e8d0ed7ad49aee759ba2f4))
+
 ### [5.0.2](https://github.com/jantimon/favicons-webpack-plugin/compare/v5.0.1...v5.0.2) (2021-02-23)
 
 
